@@ -1,0 +1,19 @@
+id: org.flatpak.twiki
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: twiki.sh
+modules:
+  - python3-requirements.json
+  - name: twiki
+    buildsystem: simple
+    build-commands:
+      - install -D twiki.sh /app/bin/twiki.sh
+      - python3 twiki.py
+    sources:
+      - type: file
+        path: twiki.sh
+#      - type: file
+#        path: twiki.py
+      - type: script
+        dest-filename: twiki.py
